@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Minutocorp | Inside Your Brand</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@300;400;600&display=swap"
+        rel="stylesheet" />
+    <style>
+        :root {
+            --color-primary: #002d5a;
+            --color-secondary: #00509e;
+            --color-accent-green: #0d4b26;
+            --color-dark: #0e0e0e;
+            --color-light: #f5f5f5;
+            --color-gold: #b59677;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #0e0e0e 0%, #1c1c1c 100%);
+            color: white;
+            overflow-x: hidden;
+            min-height: 100vh;
+            user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+}
+        
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(14, 14, 14, 0.95);
+            backdrop-filter: saturate(180%) blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 3rem;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgb(0 0 0 / 0.7);
+            font-weight: 600;
+        }
+
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            cursor: pointer;
+            color: var(--color-gold);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.3rem;
+            letter-spacing: 2px;
+            user-select: none;
+        }
+
+        .navbar .logo svg {
+            width: 36px;
+            height: 36px;
+            fill: var(--color-gold);
+            transition: transform 0.3s ease;
+        }
+
+        .navbar .logo:hover svg {
+            transform: rotate(15deg);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a {
+            color: #ddd;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            width: 0%;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--color-gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-gold);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero-bg {
+  position: relative;
+  background-image: url('fon.jpg'); /* Cambia por tu imagen */
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(23, 22, 22, 0.90); /* Capa negra translúcida */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+.hero-content {
+  z-index: 1;
+  max-width: 800px;
+}
+
+.hero-content h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 4rem;
+  color: var(--color-gold);
+  margin-bottom: 1rem;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  color: #ccc;
+}
+
+
+        /* Section common styles */
+        .section {
+            max-width: 900px;
+            margin: 3rem auto 6rem;
+            padding: 0 1.5rem;
+            /* texto no centrado */
+            /* text-align: justify aplicado solo a p y li */
+        }
+
+        .section h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.4rem;
+            color: var(--color-gold);
+            margin-bottom: 1rem;
+            font-weight: 700;
+            text-align: center;
+            user-select: none;
+        }
+
+        .section p,
+        .section li {
+            font-size: 1.15rem;
+            color: #ddd;
+            line-height: 1.8;
+            text-align: justify;
+            user-select: text;
+        }
+
+        .section ul {
+            list-style: none;
+            margin-bottom: 2rem;
+            padding-left: 0;
+            max-width: 450px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .section ul li {
+            position: relative;
+            padding-left: 1.3rem;
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        .section ul li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--color-secondary);
+            font-weight: 700;
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+
+        /* Box preview style */
+        .box-preview {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            padding: 2rem;
+            border-radius: 14px;
+            margin: 2rem auto;
+            max-width: 600px;
+            box-shadow: 0 0 15px #b5967750;
+            text-align: left;
+            user-select: none;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .box-preview:hover {
+            box-shadow: 0 0 30px #b59677cc;
+        }
+
+        .box-preview h3 {
+            color: var(--color-gold);
+            font-size: 1.8rem;
+            margin-bottom: 0.8rem;
+            font-weight: 700;
+        }
+
+        .box-preview p {
+            color: #ccc;
+            font-weight: 400;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        /* Footer */
+        footer {
+            font-size: 0.9rem;
+            background-color: #b59677;
+            color: white;
+            text-align: center;
+            padding: 1.8rem 1rem;
+            user-select: none;
+            font-weight: 600;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 1rem 1.5rem;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            #hero h1 {
+                font-size: 2.5rem;
+            }
+
+            #hero p {
+                font-size: 1rem;
+                max-width: 90vw;
+            }
+
+            .section h2 {
+                font-size: 1.8rem;
+            }
+
+            .box-preview {
+                padding: 1.5rem;
+                max-width: 90vw;
+            }
+
+            .section ul {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="navbar" role="banner">
+        <div class="logo" tabindex="0" aria-label="Logo de la empresa">
+            <img src="logom.png" alt="Minutocorp logo" style="height: 40px;" />
+        </div>
+        <nav class="nav-links" role="navigation" aria-label="Main menu">
+            <a href="#hero">HOME</a>
+            <a href="#experiencia">EXPERIENCIA</a>
+            <a href="#interior">INTERIOR</a>
+            <a href="#software">SOFTWARE</a>
+            <a href="#medios">MEDIOS</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero" class="hero-bg">
+            <div class="hero-overlay">
+              <div class="hero-content">
+            <img src="freepik__the-style-is-candid-image-photography-with-natural__32350-removebg-preview (1).png"
+                alt="Imagen de marca" style="max-width: 220px; margin-bottom: 1.5rem;" />
+            <h1>Inside Your Brand</h1>
+            <p>Una experiencia inmersiva real + digital donde tu marca cobra vida en Ecuador sin construir nada aún.</p>
+        </div>
+    </div>
+        </section>
+       
+              
+          
+        <section id="experiencia" aria-labelledby="experiencia-title" class="section">
+            <h2 id="experiencia-title">¿Qué es Inside Your Brand?</h2>
+            <p>Es un concepto innovador de Minutocorp que fusiona arquitectura, tecnología y storytelling. En lugar de
+                mostrar planos, la marca los convierte en una vivencia. Tu marca camina dentro de sí misma, sin haber
+                invertido aún un centavo.</p>
+                <br>
+                <br>
+                
+            <h2>THE IMMERSIVE BOX </h2>
+            <p>La primera sala experiencial del país donde tu marca cobra vida, sin haber construido nada aún.</p>
+        </section>
+
+        <section id="interior" aria-labelledby="interior-title" class="section">
+            <h2 id="interior-title">¿Dónde se encuentra la experiencia?</h2>
+            <ul>
+                <li>Ferias internacionales de franquicias</li>
+                <li>Puntos de alto tráfico como Urdesa o Av. Amazonas</li>
+                <li>Centros comerciales premium y salas VIP de aeropuertos</li>
+            </ul>
+            <div class="box-preview" tabindex="0" aria-label="Descripción del exterior">
+                <h3>El Exterior</h3>
+                <p>Una caja negra elegante, sin ventanas, con un letrero digital: <br><strong>“¿Quieres saber cómo se
+                        vería tu marca en Ecuador?”</strong></p>
+            </div>
+            <div class="box-preview" tabindex="0" aria-label="Descripción del interior">
+                <h3>El Interior</h3>
+                <p>LEDs 360º, sonido direccional, objetos reales, aromas, luces dinámicas y pantalla táctil. Cada 20
+                    minutos cambia por completo. Selecciona tu marca y mira cómo se transforma en una tienda, un café o
+                    una oficina.</p>
+            </div>
+<br>
+<br>
+<div class="box-preview">
+    <h3>Cronograma de Visitas</h3>
+    <p>Consulta los días y horarios disponibles para vivir la experiencia Inside Your Brand en nuestra caja inmersiva.</p>
+    
+    <table style="width: 100%; border-collapse: collapse; margin-top: 1rem; color: #ddd; font-size: 1rem;">
+      <thead>
+        <tr style="background-color: #222;">
+          <th style="padding: 0.8rem; border-bottom: 1px solid #444;">Día</th>
+          <th style="padding: 0.8rem; border-bottom: 1px solid #444;">Horario Mañana</th>
+          <th style="padding: 0.8rem; border-bottom: 1px solid #444;">Horario Tarde</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding: 0.8rem; border-bottom: 1px solid #333;">Miércoles</td>
+          <td style="padding: 0.8rem; border-bottom: 1px solid #333;">10h00 – 12h30</td>
+          <td style="padding: 0.8rem; border-bottom: 1px solid #333;">15h00 – 18h00</td>
+        </tr>
+        <tr>
+          <td style="padding: 0.8rem; border-bottom: 1px solid #333;">Viernes</td>
+          <td style="padding: 0.8rem; border-bottom: 1px solid #333;">10h00 – 13h00</td>
+          <td style="padding: 0.8rem; border-bottom: 1px solid #333;">16h00 – 20h00</td>
+        </tr>
+        <tr>
+          <td style="padding: 0.8rem; border-bottom: 1px solid #333;">Sábado</td>
+          <td style="padding: 0.8rem; border-bottom: 1px solid #333;">11h00 – 13h30</td>
+          <td style="padding: 0.8rem; border-bottom: 1px solid #333;">14h30 – 19h00</td>
+        </tr>
+        <tr>
+          <td style="padding: 0.8rem;">Domingo</td>
+          <td style="padding: 0.8rem;">12h00 – 14h00</td>
+          <td style="padding: 0.8rem;">15h00 – 18h00</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+
+        </section>
+
+        <section id="software" aria-labelledby="software-title" class="section">
+            <h2 id="software-title">Interacción y Tecnología</h2>
+            <p>Desde una pantalla táctil eliges el tipo de negocio. En segundos el entorno cambia con olor, luz,
+                temperatura y objetos reales.</p>
+            <p>Escanea un QR y accede a tu <strong>gemelo digital</strong> proyectado sobre terrenos reales de
+                Minutocorp. Observa tu tienda u oficina por fuera y por dentro en realidad aumentada.</p>
+            <p>Recibe en 48h un render interactivo con costos estimados, tiempos y ubicación disponible.</p>
+
+            <br>
+            <br>
+
+            <h2>El Software Minutocorp</h2>
+            <p>Con tecnología Unity WebGL y ARKit/ARCore, desde tu celular o filtro de Instagram puedes ver cómo luciría
+                tu espacio comercial sobre un terreno real o impreso. Cambia acabados, recorre el interior, y
+                personalízalo a tu gusto.</p>
+            <p>Todo conectado con el CRM de Minutocorp para generar leads de valor en tiempo real.</p>
+        </section>
+        <br>
+
+        
+    </main>
+
+    <footer>
+        <small>&copy; <span id="year"></span> Minutocorp. Todos los derechos reservados.</small>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+
+<script>
+    // Desactiva clic derecho
+    document.addEventListener('contextmenu', function(e) {
+      e.preventDefault();
+    });
+  
+    // Desactiva selección de texto
+    document.addEventListener('selectstart', function(e) {
+      e.preventDefault();
+    });
+  
+    // Desactiva arrastrar elementos
+    document.addEventListener('dragstart', function(e) {
+      e.preventDefault();
+    });
+  </script>
+
+</body>
+
+</html>
